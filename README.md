@@ -18,26 +18,39 @@ Point it at a folder of screenshots. It reads the text inside each one, sorts th
 - **Privacy blur** for thumbnails and text, handy when sharing your screen.
 - **Fast re-runs.** Already-sorted screenshots are skipped, and an interrupted run picks up where it stopped.
 
-## Install
+## Start here (no coding needed)
 
-### Option 1: Let Claude Code do it
+You need a computer (Mac, Windows or Linux) and a Claude plan.
 
-Paste this into Claude Code:
+**1. Install Claude Code** from [claude.com/claude-code](https://claude.com/claude-code). Then open the **Terminal** app (Mac: press `⌘ Space`, type *Terminal*, press Enter. Windows: open *PowerShell*), type `claude` and press Enter.
+
+**2. Paste this to Claude:**
 
 ```
-Set up and open https://github.com/<your-username>/screenshot-graveyard
+Set up and open https://github.com/VarunSaini23/screenshot-graveyard-claude
 ```
 
-### Option 2: Manual
+Claude downloads it, installs everything and opens the app in your browser.
+
+**3. In the app:** paste or pick your screenshots folder, click **Scan folder**, then **Start sorting**. The first sort downloads a ~600 MB image model once. After that it works offline.
+
+## Using it again
+
+While it's running, the app lives at **http://localhost:8765**. To open it again later, either:
+
+- double-click **Open Screenshot Graveyard** in the `screenshot-graveyard` folder in your home folder (`.command` on Mac, `.bat` on Windows), or
+- tell Claude "open screenshot graveyard".
+
+## Running it by hand
 
 ```bash
-git clone https://github.com/<your-username>/screenshot-graveyard
-cd screenshot-graveyard
-./run.sh          # macOS / Linux
-.\run.ps1         # Windows (PowerShell)
+git clone https://github.com/VarunSaini23/screenshot-graveyard-claude ~/screenshot-graveyard
+cd ~/screenshot-graveyard
+./run.sh                                             # macOS / Linux
+powershell -ExecutionPolicy Bypass -File .\run.ps1   # Windows
 ```
 
-The script creates a virtual environment, installs everything, starts the app and opens **http://localhost:8765** in your browser. If that port is busy, it uses the next free one and prints the address.
+The script creates a virtual environment, installs everything, starts the app and opens **http://localhost:8765** in your browser. If that port is busy, it uses the next free one and prints the address. If it's already running, it just opens the page.
 
 ### Requirements
 
@@ -91,7 +104,7 @@ If the [`claude`](https://docs.anthropic.com/en/docs/claude-code) CLI is install
 
 ## Uninstall
 
-Delete the project folder and `~/.screenshot-graveyard/`. To remove the cached image model too, delete the OpenCLIP folders under `~/.cache/huggingface/`.
+Delete the `screenshot-graveyard` folder and `~/.screenshot-graveyard/`. To remove the cached image model too, delete the OpenCLIP folders under `~/.cache/huggingface/`.
 
 ## Running the tests
 

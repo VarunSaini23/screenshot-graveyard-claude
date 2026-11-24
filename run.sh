@@ -3,6 +3,16 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+# Already running? Just open the page again instead of starting a second copy.
+PORT="${SG_PORT:-8765}"
+if curl -s --max-time 2 "http://localhost:$PORT/api/status" 2>/dev/null | grep -q '"platform"'; then
+  echo "Screenshot Graveyard is already running at http://localhost:$PORT"
+  if [ "${SG_NO_BROWSER:-}" != "1" ]; then
+    if command -v open >/dev/null 2>&1; then open "http://localhost:$PORT"; elif command -v xdg-open >/dev/null 2>&1; then xdg-open "http://localhost:$PORT"; fi
+  fi
+  exit 0
+fi
+
 PY=""
 for c in python3.13 python3.12 python3.11 python3; do
   if command -v "$c" >/dev/null 2>&1; then
