@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.db
+*.db-wal
+*.db-shm
+thumbs/
+Screenshot Graveyard Output/
+models/
+.env
+.DS_Store
+node_modules/
+samples*/
+samples*-truth.json

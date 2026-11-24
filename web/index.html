@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Screenshot Graveyard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪦</text></svg>">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">🪦</span><span>Screenshot Graveyard</span></div>
+    <div class="search hidden" id="searchBox">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search inside screenshots: Swiggy, PNR, address..." autocomplete="off">
+    </div>
+    <div class="spacer"></div>
+    <span class="badge toggle" id="blurToggle" title="Blur thumbnails so personal details aren't readable at a glance">🙈 Privacy blur: off</span>
+    <span class="badge" id="claudeBadge" title="Checking for Claude Code…"><span class="dot"></span><span class="txt">Claude: …</span></span>
+  </header>
+
+  <!-- 1. Start -->
+  <section class="screen" id="start">
+    <div class="start-card glass">
+      <div class="tomb">🪦</div>
+      <h1>Screenshot Graveyard</h1>
+      <p class="sub">Everything stays on your laptop. Nothing is uploaded.</p>
+      <form class="folder-row" id="scanForm">
+        <input id="folder" placeholder="Paste a folder path, e.g. ~/Pictures/Screenshots" autocomplete="off" spellcheck="false">
+        <button class="btn primary" id="scanBtn" type="submit">Scan folder</button>
+      </form>
+      <div class="chips" id="chips"></div>
+      <div class="found" id="found"></div>
+      <p class="privacy-note">Your images never leave this computer. Text is read on-device.<br>
+        If Claude Code is on, only short text snippets from unclear screenshots are sent through your own Claude subscription.</p>
+    </div>
+  </section>
+
+  <!-- 2. Sorting -->
+  <section class="screen hidden" id="sorting">
+    <div class="wall-wrap">
+      <div class="wall" id="wall"></div>
+      <div class="counter glass">
+        <div class="phase" id="phase">Getting ready…</div>
+        <div class="num"><span id="cDone">0</span><span class="of"> / <span id="cTotal">0</span></span></div>
+        <div class="label">sorted</div>
+        <div class="bar"><i id="barFill"></i></div>
+        <div class="meta"><span id="elapsed">0:00</span><button class="linkbtn" id="cancelBtn" type="button">Stop</button><span id="rate"></span></div>
+      </div>
+    </div>
+    <aside class="piles" id="piles"></aside>
+  </section>
+
+  <!-- 3. Summary -->
+  <section class="screen hidden" id="summary">
+    <div class="sum-wrap">
+      <h2 id="sumTitle">Done.</h2>
+      <p class="lead" id="sumLead"></p>
+      <div class="stats" id="stats"></div>
+      <div class="witty" id="witty"></div>
+      <div class="junk-strip" id="junkStrip"></div>
+      <div class="sum-actions">
+        <button class="btn danger big" id="sumTrash">Move junk to Trash</button>
+        <button class="btn big" id="sumResults">See all screenshots</button>
+      </div>
+      <div class="freed" id="freed"></div>
+    </div>
+  </section>
+
+  <!-- 4. Results -->
+  <section class="screen hidden" id="results">
+    <nav class="sidebar glass" id="sidebar"></nav>
+    <div class="main">
+      <div class="main-head">
+        <div class="cards" id="cards"></div>
+        <div class="actions">
+          <button class="btn small primary" id="exportBtn">Export sorted folders</button>
+          <button class="btn small danger" id="trashBtn">Move junk to Trash</button>
+          <button class="btn small" id="openBtn">Open output folder</button>
+          <button class="btn small" id="newBtn">Scan another folder</button>
+        </div>
+      </div>
+      <div class="grid-head"><h3 id="gridTitle">All screenshots</h3><span class="muted" id="gridCount"></span></div>
+      <div class="grid-scroll" id="gridScroll">
+        <div class="grid" id="grid"></div>
+        <div class="sentinel" id="sentinel"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="overlayRoot"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
