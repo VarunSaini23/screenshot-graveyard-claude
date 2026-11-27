@@ -10,7 +10,7 @@ const COLOR = Object.fromEntries(CATS.map(([n, c]) => [n, c]));
 const ICON = Object.fromEntries(CATS.map(([n, , i]) => [n, i]));
 
 const $ = (s) => document.querySelector(s);
-const fmt = (n) => Number(n || 0).toLocaleString("en-US");
+const fmt = (n) => Math.round(Number(n || 0)).toLocaleString("en-US");
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 function bytes(b) {
   b = Number(b || 0);

@@ -4,7 +4,18 @@
 
 Point it at a folder of screenshots. It reads the text inside each one, sorts them into piles (Receipts, OTPs, Chats, Memes, Tickets, Shopping, Addresses, Recipes, Notes, Photos, Other), finds duplicates and junk, and lets you search for anything you ever screenshotted ("Swiggy", "PNR", "that address Rohan sent").
 
-> _Demo GIF coming soon._
+![Screenshot Graveyard sorting 338 screenshots](docs/demo.gif)
+
+<sub>The demo uses fake, generated screenshots, not real ones.</sub>
+
+## What it looks like
+
+| | |
+|---|---|
+| ![Pick a folder](docs/start.jpg) | ![Sorting live](docs/sorting.jpg) |
+| **1. Pick a folder.** It counts your screenshots and never changes the originals. | **2. Watch it sort.** Every screenshot flies into its pile as its text is read. |
+| ![Summary](docs/summary.jpg) | ![Search inside screenshots](docs/search.jpg) |
+| **3. See what you've been hoarding.** Old OTPs, duplicates, and how much space you can free. | **4. Search the text inside every screenshot.** Find that Swiggy receipt or PNR in a second. |
 
 ## Features
 
